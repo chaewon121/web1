@@ -5,28 +5,33 @@
     <meta charset="UTF-8">
     <title></title>
     <script>
+      function LinksSetColor(color){
+        var alist = document.querySelectorAll('a');
+            var i = 0;
+            while(i < alist.length){
+                alist[i].style.color = color;
+                i = i + 1;
+            }
+
+      }
+      function BodySetColor(color){
+        document.querySelector('body').style.color = color;
+      }
+      function BodySetBackgroundColor(color){
+        document.querySelector('body').style.backgroundColor = 'black';
+      }
         function nightDayHandler(self){
             var target = document.querySelector('body');
             if(self.value === 'night'){
-            target.style.backgroundColor = 'black';
-            target.style.color = 'white';
-            self.value = 'day';
-            var alist = document.querySelectorAll('a');
-            var i = 0;
-            while(i < alist.length){
-                alist[i].style.color = 'powderblue';
-                i = i + 1;
-            }
+              BodySetBackgroundColor('black')
+              BodySetColor('white');
+              self.value = 'day';
+              LinksSetColor('powderblue');
             } else {
-            target.style.backgroundColor = 'white';
-            target.style.color = 'black';
-            self.value = 'night';
-            var alist = document.querySelectorAll('a');
-            var i = 0;
-            while(i < alist.length){
-                alist[i].style.color = 'blue';
-                i = i + 1;
-            }
+              BodySetBackgroundColor('white')
+              BodySetColor('black');
+              self.value = 'night';
+              LinksSetColor('blue');
             }
         }
     </script>
@@ -36,9 +41,7 @@
     <input id="night_day" type="button" value="night" onclick="
       nightDayHandler(this);
     ">
-    <input id="night_day" type="button" value="night" onclick="
-      nightDayHandler(this);
-    ">
+    
     <ol>
       <li><a href="1.html">HTML</a></li>
       <li><a href="2.html">CSS</a></li>
